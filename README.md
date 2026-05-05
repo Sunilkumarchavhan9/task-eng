@@ -25,9 +25,6 @@ npm start
 ### 3) Server console log output
 ![Server console log](terminaloutput2.png)
 
-### 3) Contract deployed
-![Server console log](<img width="1872" height="1037" alt="image" src="https://github.com/user-attachments/assets/1368ddad-1558-4757-b2a5-9267e593aa4d" />
-)
 
 ## Video Proof
 
