@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const killPort = require('kill-port');
+const { ethers } = require('ethers');
 
 require('dotenv').config();
 
@@ -62,6 +63,38 @@ const checkPort = async (port, maxPort = 65535) => {
      *   "txHash": "0x..."
      * }
      */
+    app.get('/api/SunilApiTest', async (req, res) => {
+        try {
+            const provider = new ethers.JsonRpcProvider('https://ethereum.publicnode.com');
+            const usdcContract = new ethers.Contract(
+                '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+                ['function totalSupply() view returns (uint256)', 'function decimals() view returns (uint8)'],
+                provider
+            );
+
+            const [totalSupplyRaw, decimals] = await Promise.all([
+                usdcContract.totalSupply(),
+                usdcContract.decimals()
+            ]);
+
+            const formattedSupply = ethers.formatUnits(totalSupplyRaw, decimals);
+
+            console.log('[SunilApiTest] WETH total supply fetched:', formattedSupply);
+
+            return res.status(200).json({
+                endpoint: 'SunilApiTest',
+                contract: 'WETH',
+                network: 'Ethereum Mainnet',
+                totalSupply: formattedSupply
+            });
+        } catch (error) {
+            console.error('[SunilApiTest] Failed to fetch on-chain data:', error.message);
+            return res.status(500).json({
+                endpoint: 'SunilApiTest',
+                error: 'Failed to fetch smart contract data'
+            });
+        }
+    });
 
     // Serve static files in production
     if (process.env.NODE_ENV === 'production') {

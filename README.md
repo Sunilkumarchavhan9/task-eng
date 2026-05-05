@@ -1,82 +1,30 @@
-# Engineering Assessment
+# Engineering Assessment Submission
 
-## 📝 Objective
+Implemented a new API endpoint `GET /api/SunilApiTest` in `src/index.js` using `ethers.js`.
 
-The goal of this assessment is to evaluate your ability to:
+The endpoint connects to Ethereum mainnet through a public RPC and fetches data from the public WETH smart contract:
+- Contract: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
+- Data fetched: `totalSupply()` + `decimals()`
+- Output: JSON response in API + value logged in server console
 
-Work with Web3 technologies and integrate blockchain functionality into a decentralized application (dApp).
-
----
-
-## 📌 Task Instructions
-
-1. **Create a New API Endpoint**
-
-   - Add a new API endpoint in `index.js` named:
-
-     ```
-     [Name]ApiTest
-     ```
-
-2. **Smart Contract Interaction**
-
-   - Select any **pre-deployed** or **public smart contract** (mainnet or testnet).
-   
-   - Fetch some data (any useful information such as balance, contract state, or public variables).
-   
-   - The logic should fetch data through your new API endpoint.
-
-
-3. **Output**
-
-   - The result should be printed to the console.
-   - No need for complex UI or data persistence 
-   - just demonstrate that the data was fetched successfully.
-
----
-
-## 📤 Submission
-
-Once completed, submit one of the following:
-
-- **short video** recording your work.
-- **screenshots** showing the API call and console result.
-- **Github Link** where your assessment result were pushed.
-
----
-
-## ⏰ Time Expectation
-
-- Estimated time to complete: **30–60 minutes**.
-
----
-
-## ⚙️ Notes
-
-You may use any blockchain provider such as:
-
-  - **ethers.js**
-  - **web3.js**
-  - Any public RPC provider (Infura, Alchemy, QuickNode, etc.)
-  
-Keep your code **clean, simple, and easy to review**.
-
-Handle errors gracefully where possible.
-
----
-## 🚀 Quick Start Guide
-
-To run the project locally:
+## Run locally
 
 ```bash
-# Clone the repository (if provided)
-git clone [repo-url]
-
-# Move into the project directory
-cd [project-folder]
-
-# Install dependencies
 npm install
-
-# Start the server
 npm start
+```
+
+## Proof Screenshots
+
+### 1) Endpoint code in `src/index.js`
+![Endpoint code](src/index.png)
+
+### 2) Terminal API JSON response
+![Terminal API response](terminaloutput%20.png)
+
+### 3) Server console log output
+![Server console log](terminaloutput2.png)
+
+## Video Proof
+
+[Watch/Download screen recording](screenrecord.mp4)
